@@ -445,7 +445,7 @@ app.layout = html.Div(
     style={"fontFamily": "Arial, sans-serif", "padding": "10px"},
 )
 
-
+# B2 modification 2
 register_callbacks(app)
 
 if __name__ == "__main__":
