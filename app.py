@@ -448,5 +448,9 @@ app.layout = html.Div(
 # B2 modification 2
 register_callbacks(app)
 
+# B1 modification 2
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+# C4 modification 2
