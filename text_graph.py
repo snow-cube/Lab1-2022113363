@@ -1,5 +1,6 @@
 import re
 from collections import defaultdict
+import heapq
 
 
 class TextGraph:
@@ -37,7 +38,7 @@ class TextGraph:
             elements.append({"data": {"source": src, "target": tgt, "weight": weight}})
         return elements
 
-    def get_bridge_words(self, word1, word2):
+    def queryBridgeWords(self, word1, word2):
         word1 = word1.lower()
         word2 = word2.lower()
         bridge_words = set()
@@ -65,9 +66,7 @@ class TextGraph:
         # 返回 (桥接词列表, word1 到桥接词的边, 桥接词到 word2 的边)
         return list(bridge_words), word1_to_bridge_edges, bridge_to_word2_edges
 
-    def get_shortest_path(self, word1, word2):
-        import heapq
-
+    def calcShortestPath(self, word1, word2):
         word1 = word1.lower()
         word2 = word2.lower()
         if word1 not in self.nodes or word2 not in self.nodes:
@@ -295,7 +294,7 @@ class TextGraph:
             word1, word2 = words[i], words[i + 1]
 
             # Find bridge words between this pair
-            bridges, _, _ = self.get_bridge_words(word1, word2)
+            bridges, _, _ = self.queryBridgeWords(word1, word2)
 
             # If bridge words exist, randomly select one and add it
             if bridges:

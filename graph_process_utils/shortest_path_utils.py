@@ -60,7 +60,7 @@ def process_shortest_path(
     elif not word2_exists:
         return [], f"单词 '{word2}' 不存在于图中", style_state
 
-    path, total_weight = tg.get_shortest_path(word1, word2)
+    path, total_weight = tg.calcShortestPath(word1, word2)
 
     # Only update the visual style if the graph is displayed
     if is_graph_displayed:

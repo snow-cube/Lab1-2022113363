@@ -39,7 +39,7 @@ def process_bridge_words(
         return [], f"单词 '{word2}' 不存在于图中", style_state
 
     # Always calculate the bridge words result and get edge information directly
-    bridges, word1_to_bridge_edges, bridge_to_word2_edges = tg.get_bridge_words(
+    bridges, word1_to_bridge_edges, bridge_to_word2_edges = tg.queryBridgeWords(
         word1, word2
     )
 
