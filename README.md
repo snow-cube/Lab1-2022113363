@@ -48,14 +48,6 @@ Text Graph 是一个基于 Dash 的词图可视化工具，用于分析文本中
 
    以执行程序。uv 将自动在目录下创建虚拟环境、安装依赖并运行程序。项目环境是通过 `pyproject.toml` 配置的。
 
-   若您不想使用 uv 来管理环境，也提供了 `requirements.txt` 文件来声明依赖；此时您可以使用
-
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-
-   来通过安装依赖。此后便可以通过 `python app.py <文本文件路径>` 运行。
-
 ## 使用说明
 
 1. **上传文本文件**：
