@@ -7,32 +7,38 @@ def test_graph():
     return g
 
 # ========== 等价类测试 ==========
-
-# 无效类：起点不存在
-def test_invalid_start_node(test_graph):
-    path, cost = test_graph.calcShortestPath("x", "c")
-    assert path == [] and cost == 0
-
-# 无效类：终点不存在
-def test_invalid_end_node(test_graph):
-    path, cost = test_graph.calcShortestPath("a", "z")
-    assert path == [] and cost == 0
-
-# 无效类：无路径存在
-def test_no_path_between_nodes(test_graph):
-    path, cost = test_graph.calcShortestPath("e", "a")
-    assert path == [] and cost == 0
-
-# 有效类：路径存在
+# 用例 1 有效类：路径存在一条 (1)(4)(7)
 def test_path_exists(test_graph):
     path, cost = test_graph.calcShortestPath("a", "e")
     assert path == ["a", "b", "c", "d", "e"]
     assert cost == 4
 
-# 有效类：起点等于终点
+# 用例 2 有效类：多路径，选最短 (5)
+def test_multiple_paths_select_shortest():
+    g = TextGraph("a b a b a b a c c b b d")
+    path, cost = g.calcShortestPath("a", "d")
+    assert path == ["a", "c", "b", "d"]
+    assert cost == 3  # a→c→b→d 优于 a→b→d
+
+# 用例 3 有效类：起点等于终点 (8)
 def test_same_start_end(test_graph):
     path, cost = test_graph.calcShortestPath("b", "b")
     assert path == ["b"] and cost == 0
+
+# 用例 4 无效类：起点不存在 (2)
+def test_invalid_start_node(test_graph):
+    path, cost = test_graph.calcShortestPath("x", "c")
+    assert path == [] and cost == 0
+
+# 用例 5 无效类：终点不存在 (3)
+def test_invalid_end_node(test_graph):
+    path, cost = test_graph.calcShortestPath("a", "z")
+    assert path == [] and cost == 0
+
+# 用例 6 无效类：无路径存在 (6)
+def test_no_path_between_nodes(test_graph):
+    path, cost = test_graph.calcShortestPath("e", "a")
+    assert path == [] and cost == 0
 
 # ========== 边界值测试 ==========
 
@@ -47,13 +53,6 @@ def test_two_nodes_disconnected():
     g = TextGraph("x y")
     path, cost = g.calcShortestPath("y", "x")
     assert path == [] and cost == 0
-
-# 边界：多路径，选最短
-def test_multiple_paths_select_shortest():
-    g = TextGraph("a b a b a b a c c b b d")
-    path, cost = g.calcShortestPath("a", "d")
-    assert path == ["a", "c", "b", "d"]
-    assert cost == 3  # a→c→b→d 优于 a→b→d
 
 # 边界：起点为无出边节点
 def test_start_node_no_outgoing():
